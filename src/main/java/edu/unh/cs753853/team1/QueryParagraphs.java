@@ -1,7 +1,7 @@
 /**
  * 
  */
-package edu.unh.cs753853;
+package edu.unh.cs753853.team1;
 
 import java.io.BufferedReader;
 import java.io.File;
