@@ -452,42 +452,48 @@ public class QueryParagraphs {
 			// performing dcg@20
 			for (int i = 0; i < 20; i++ ) {
 				
-				if ( i > arrRelevant.size()) {
-					break;
-				}
 				if (arrOutput == null || arrRelevant == null)
 					continue;
 				rank++;
-				paraId = arrOutput.get(i);
-				if ( arrRelevant.contains(paraId)) {
-					dcg += (1 / ( Math.log10(rank+1)/Math.log10(2) ));
+				
+				if (i < arrOutput.size())
+					paraId = arrOutput.get(i);
+				
+				else
+					continue;
+				
+				if ( i > arrRelevant.size()) {
+					break;
 				}
 				
-				
-			}
+				if ( arrRelevant.contains(paraId)) {
+					dcg =dcg+ (1 / ( Math.log10(rank+1)/Math.log10(2) ));
+				}
+				}
 			
 			rank = 0;
 			// performing idcg
 			for (int i = 0; i < 20; i++ ) {
 				if (arrOutput == null || arrRelevant == null)
 					continue;
+				if(i < arrOutput.size())
+					paraId = arrOutput.get(i);
+				else
+					continue;
+				
 				if ( i > arrRelevant.size()) {
 					break;
 				}
-				paraId = arrOutput.get(i);
+				
 				if ( arrRelevant.contains(paraId)) {
 					rank++;
 					idcg += 1 / ( Math.log10(rank+1)/Math.log10(2) );
 				}
-				
-				
-			}
+				}
 			
 			return dcg/idcg;
 		}
 		
-	
-	    
 public static void main(String[] args) {
 			// TODO Auto-generated method stub
 			QueryParagraphs q = new QueryParagraphs();
