@@ -467,7 +467,7 @@ public class QueryParagraphs {
 				}
 				
 				if ( arrRelevant.contains(paraId)) {
-					dcg =dcg+ (1 / ( Math.log10(rank+1)/Math.log10(2) ));
+					dcg =(float) (dcg+ (1 / ( Math.log10(rank+1)/Math.log10(2) )));
 				}
 				}
 			
@@ -548,7 +548,7 @@ public static void main(String[] args) {
 				 System.err.println("*********************************************NDCG Value*****************************************");
 				for (Data.Page p:pagelist)
 				{
-					System.out.println(p.getPageId() + " : " + CalculateNDCG20(p.getPageId()));
+					System.out.format("%-60s%1.3f\n", p.getPageId(), CalculateNDCG20(p.getPageId()));
 				}
 				
 				} catch (CborException | IOException | ParseException e) {
