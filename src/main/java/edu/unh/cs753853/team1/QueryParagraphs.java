@@ -548,7 +548,14 @@ public static void main(String[] args) {
 				 System.err.println("*********************************************NDCG Value*****************************************");
 				for (Data.Page p:pagelist)
 				{
-					System.out.format("%-60s%1.3f\n", p.getPageId(), CalculateNDCG20(p.getPageId()));
+					
+					 ndcgValue=CalculateNDCG20(p.getPageId());
+					 if (Double.isNaN(ndcgValue)) {
+						   ndcgValue=0;
+						}
+						
+					System.out.format("%-60s%1.3f\n", p.getPageId(), ndcgValue);
+				
 				}
 				
 				} catch (CborException | IOException | ParseException e) {
